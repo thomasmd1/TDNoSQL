@@ -16,7 +16,7 @@ router.get('/hello', function(req, res) {
     var p = new Person({
         firstname: 'Ted',
         lastname: 'Mosby',
-        age: 30
+        age: 10
     });
 
     // Permet d'insérer une nouvelle donnée
@@ -31,6 +31,19 @@ router.get('/add', function(req, res) {
 
 router.post('/add', function(req, res) {
     res.redirect('/add');
+});
+
+router.get('/stats', function(req, res){
+  Person.find({
+    $and:[
+     {age: {$gt: 20, $lt: 40}},
+     { gender: 'male'},
+      $or: [
+        { company: 'Facebook'},
+        { company: 'Instagram'} ]
+    ]}).then(function(personTest){
+    res.render('stats.ejs', { personTest: personTest});
+  });
 });
 
 module.exports = router;

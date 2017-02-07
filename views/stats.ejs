@@ -10,19 +10,13 @@
     <body>
         <%- include('shared/menu') %>
         <div class="container">
-            <a class="btn btn-primary pull-right" href="/add">
-                <span class="glyphicon glyphicon-plus"></span> Ajouter une personne
-            </a>
-            <a href="/stats" class="btn btn-info">
-              <span class="glyphicon glyphicon-list"></span> Accès à la page des stats
-            </a>
-            <h1>Liste des peronnes</h1>
-
-            <ul>
-            <% persons.forEach(function(p) { %>
+            <a class="btn btn-danger pull-right" href="/">Retour</a>
+            <h1>Hommes entre 20 et 40 ans travaillant chez FB ou Insta</h1>
+            <% personTest.forEach(function(p) { %>
                 <li><%= p.firstname + ' ' + p.lastname %></li>
             <% }); %>
-            </ul>
         </div>
+
+
     </body>
 </html>
