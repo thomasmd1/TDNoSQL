@@ -37,7 +37,14 @@ router.get('/loadData', function(req, res) {
         var p = new Person({
           firstname: item[0],
           lastname: item[1],
-          age: item[3]
+          age: item[3],
+          gender: item[2],
+          company: item[4],
+          departement: item[5],
+          email: item[6],
+          city: item[7],
+          country: item[8],
+          ip_address: item[9]
         })
 
         p.save().then(function(personSaved){

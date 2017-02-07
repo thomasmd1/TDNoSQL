@@ -5,7 +5,14 @@ var Schema = mongoose.Schema;
 var personSchema = new Schema({
     firstname: "String",
     lastname: "String",
-    age: "Number"
+    age: "Number",
+    gender: "String",
+    compagny: "String",
+    departement: "String",
+    email: "String",
+    city: "String",
+    country: "String",
+    ip_adress: "String"
 }, {collection: 'persons'});
 
 // Exporte le modèle basé sur le schéma
