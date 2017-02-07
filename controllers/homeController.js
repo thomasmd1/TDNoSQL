@@ -77,7 +77,7 @@ router.get('/loadData', function(req, res) {
           email: item[6],
           city: item[7],
           country: item[8],
-          ip_address: item[9]
+          ip_adress: item[9]
         })
 
         p.save().then(function(personSaved){
