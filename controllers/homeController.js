@@ -73,16 +73,20 @@ router.post('/add', function(req, res) {
 });
 
 router.get('/stats', function(req, res){
+  var firstFilter;
   Person.find({
-    $and:[
-     {age: {$gt: 20, $lt: 40}},
-     { gender: 'male'},
-      $or [
-        { company: 'Facebook'},
-        { company: 'Instagram'} ]
-    ]}).then(function(personTest){
-    res.render('stats.ejs', { personTest: personTest});
+      $and: [{"gender": "Male"},{"age": {$gte: 20,$lte: 40}},{$or: [{"company": "Gigazoom"},{"company": "DabZ"}]}]
+    }).then(function(personTest){
+
+
+      Person.find({
+        $and: [{"gender": "Female"}, {"company": "Twimbo"}] })
+        .sort({"age" : -1}).limit(1).then(function(personTest2){
+
+          res.render('stats.ejs', { personTest: personTest, p2: personTest2});
+      });
   });
 });
+
 
 module.exports = router;

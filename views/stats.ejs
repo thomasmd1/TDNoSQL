@@ -10,12 +10,18 @@
     <body>
         <%- include('shared/menu') %>
         <div class="container">
-            <a class="btn btn-danger pull-right" href="/">Retour</a>
-            <h1>Hommes entre 20 et 40 ans travaillant chez FB ou Insta</h1>
-            <% personTest.forEach(function(p) { %>
-                <li><%= p.firstname + ' ' + p.lastname %></li>
-            <% }); %>
-            <h1>Hommes entre 20 et 40 ans travaillant chez FB ou Insta</h1>
+          <a class="btn btn-danger pull-right" href="/">Retour</a>
+          <h1>Hommes entre 20 et 40 ans travaillant chez GigaZoom ou DabZ</h1>
+          <% personTest.forEach(function(p) { %>
+              <li><%= p.firstname + ' ' + p.lastname %></li>
+          <% }); %>
+          <h1>La femme la plus agée travaillant chez Twimbo</h1>
+          <% p2.forEach(function(p) { %>
+              <li><%= p.firstname + ' ' + p.lastname %></li>
+          <% }); %>
+          <h1>Le prénom des gens ayant une adresse IP en X.129.X.X</h1>
+          <h1>Le nombre de personne ayant un chiffre dans leur adresse mail</h1>
+          <h1>Le nom de l’entreprise ayant le pourcentage de femmes le plus élevé, ainsi que le pourcentage</h1>
 
         </div>
 
