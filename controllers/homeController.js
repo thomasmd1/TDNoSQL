@@ -52,7 +52,7 @@ router.get('/stats', function(req, res){
     $and:[
      {age: {$gt: 20, $lt: 40}},
      { gender: 'male'},
-      $or: [
+      $or [
         { company: 'Facebook'},
         { company: 'Instagram'} ]
     ]}).then(function(personTest){
