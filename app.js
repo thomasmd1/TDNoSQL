@@ -5,6 +5,11 @@ var mongoose = require('mongoose');
 // Permet de changer le système de promesses de mongo par celui de Node
 mongoose.Promise = global.Promise;
 
+// Permet de parser les parametres des requetes post
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 // Permet de definir un template engine
 app.set('view engine', 'ejs');
 

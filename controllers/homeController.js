@@ -25,12 +25,26 @@ router.get('/hello', function(req, res) {
     });
 });
 
+router.get('/loadData', function(req, res) {
+
+    res.render('home.ejs');
+});
+
 router.get('/add', function(req, res) {
     res.render('add.ejs');
 });
 
 router.post('/add', function(req, res) {
-    res.redirect('/add');
+    var p = new Person({
+        firstname: req.body.user.firstname,
+        lastname: req.body.user.lastname,
+        age: req.body.user.age
+    });
+
+    // Insère une personne avec les paramètres du formulaire
+    p.save().then(function(personSaved){
+        res.render('hello.ejs', personSaved);
+    });
 });
 
 router.get('/stats', function(req, res){

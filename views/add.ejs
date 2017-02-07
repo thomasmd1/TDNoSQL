@@ -12,6 +12,30 @@
         <div class="container">
             <a class="btn btn-danger pull-right" href="/">Retour</a>
             <h1>Ajouter une personne</h1>
+
+            <div class="col-md-4">
+              <form method="post" action="/add">
+                <div class="form-group row">
+                  <label for="inputFirstname" class="col-form-label">Firstname</label>
+                  <input type="text" name="user[firstname]" id="inputFirstname" class="form-control" >
+                </div>
+
+                <div class="form-group row">
+                  <label for="inputLastname" class="col-form-label">Lastname</label>
+                  <input type="text" name="user[lastname]" id="inputLastname" class="form-control" >
+                </div>
+
+                <div class="form-group row">
+                  <label for="inputAge" class="col-form-label">Age</label>
+                  <input type="number" name="user[age]" id="inputAge" class="form-control" >
+                </div>
+
+                <div class="form-group row">
+                  <button type="submit" class="btn btn-primary">Créer</button>
+                </div>
+              </form>
+
+          </div>
         </div>
     </body>
 </html>
