@@ -1,4 +1,5 @@
 var router = require('express').Router();
+var fs = require('fs');
 var Person = require('../models/Person');
 
 // Permet de créer une route qui map l'url "/" en GET
@@ -26,8 +27,25 @@ router.get('/hello', function(req, res) {
 });
 
 router.get('/loadData', function(req, res) {
+  fs.readFile('./data/persons.csv', 'utf-8', function(err, data) {
+      if (err) throw err;
 
-    res.render('home.ejs');
+      var lines = data.trim().split('\n');
+
+      for (var i = 1; i < lines.length; i++) {
+        var item = lines[i].split(',');
+        var p = new Person({
+          firstname: item[0],
+          lastname: item[1],
+          age: item[3]
+        })
+
+        p.save().then(function(personSaved){
+            console.log("Person add" + personSaved);
+        });
+      }
+  });
+    //res.render('home.ejs');
 });
 
 router.get('/add', function(req, res) {
