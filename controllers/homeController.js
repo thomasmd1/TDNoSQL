@@ -88,6 +88,7 @@ router.get('/loadData', function(req, res) {
       }
   });
     //res.render('home.ejs');
+    res.redirect('/');
 });
 
 router.get('/add', function(req, res) {
