@@ -72,7 +72,7 @@ router.get('/loadData', function(req, res) {
           lastname: item[1],
           age: item[3],
           gender: item[2],
-          company: item[4],
+          compagny: item[4],
           departement: item[5],
           email: item[6],
           city: item[7],
@@ -123,7 +123,7 @@ router.get('/stats', function(req, res){
   Person.find({
       $and: [{"gender": "Male"},{"age": {$gte: 20,$lte: 40}},{$or: [{"company": "Gigazoom"},{"company": "DabZ"}]}]
     }).then(function(personTest){
-
+      console.log(personTest)
 
       Person.find({
         $and: [{"gender": "Female"}, {"company": "Twimbo"}] })
