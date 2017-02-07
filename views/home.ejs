@@ -10,19 +10,66 @@
     <body>
         <%- include('shared/menu') %>
         <div class="container">
-            <a class="btn btn-primary pull-right" href="/add">
-                <span class="glyphicon glyphicon-plus"></span> Ajouter une personne
-            </a>
-            <a href="/stats" class="btn btn-info">
-              <span class="glyphicon glyphicon-list"></span> Accès à la page des stats
-            </a>
-            <h1>Liste des peronnes</h1>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <a href="/stats" class="btn btn-info">
+                <span class="glyphicon glyphicon-list"></span> Accès à la page des stats
+              </a>
 
-            <ul>
-            <% persons.forEach(function(p) { %>
-                <li><%= p.firstname + ' ' + p.lastname %></li>
-            <% }); %>
-            </ul>
+              <a class="btn btn-primary" href="/add">
+                <span class="glyphicon glyphicon-plus"></span> Ajouter une personne
+              </a>
+
+            </div>
+
+            <div class="col-md-6 pull-right">
+              <ul class="pagination pull-right">
+                <li class="page-item"><a class="page-link" href="/page/<%= current-1 %>">Previous</a></li>
+                  <% for(var i=1; i<current+5; i++) {%>
+                    <% if(i<=current && i>current-5) { %>
+                    <li <% if(current==i){ %> class="active" <% } %>><a href="/page/<%= i %>"> <%= i %> </a></li>
+                    <% } %>
+                    <% if(i>current && i<current+5) { %>
+                    <li <% if(current==i){ %> class="active" <% } %>><a href="/page/<%= i %>"> <%= i %> </a></li>
+                    <% } %>
+                  <% } %>
+                <li class="page-item"><a class="page-link" href="/page/<%= current+1 %>">Next</a></li>
+              </ul>
+            </div>
+          </div>
+            <h1>Liste des peronnes </h1>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>departement</th>
+                  <th>email</th>
+                  <th>city</th>
+                  <th>country</th>
+                  <th>ip</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% persons.forEach(function(p,i) {  %>
+                <tr>
+                  <td><%= p.firstname %></td>
+                  <td><%= p.lastname %></td>
+                  <td><%= p.age %></td>
+                  <td><%= p.gender %></td>
+                  <td><%= p.departement %></td>
+                  <td><%= p.email %></td>
+                  <td><%= p.city %></td>
+                  <td><%= p.country %></td>
+                  <td><%= p.ip_adress %></td>
+                </tr>
+              <% }); %>
+              </tbody>
+            </table>
+
+
         </div>
     </body>
 </html>
