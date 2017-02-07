@@ -2,7 +2,6 @@ var router = require('express').Router();
 var fs = require('fs');
 var Person = require('../models/Person');
 
-// Permet de créer une route qui map l'url "/" en GET
 router.get('/page/:page', function(req, res) {
   if(!req.params.page){
     next()
@@ -22,7 +21,6 @@ router.get('/page/:page', function(req, res) {
       limit=100;
 
       Person.find({}).skip(min).limit(limit).then(function(p) {
-          // Permet d'afficher une vue et de lui passer des paramètre
           res.render('home.ejs', { persons: p, pages: nbPage, current: currentPage, pmi: pageMin, pma: pageMax});
       });
     });
@@ -107,6 +105,18 @@ router.post('/add', function(req, res) {
         res.render('hello.ejs', personSaved);
     });
 });
+
+router.get('/delete', function(req, res) {
+  Person.remove({}, function(err) {
+            if (err) {
+                console.log(err)
+            } else {
+                res.end('success');
+            }
+        }
+    );
+  res.redirect('/');
+})
 
 router.get('/stats', function(req, res){
   var firstFilter;
