@@ -7,7 +7,7 @@ var personSchema = new Schema({
     lastname: "String",
     age: "Number",
     gender: "String",
-    compagny: "String",
+    company: "String",
     departement: "String",
     email: "String",
     city: "String",

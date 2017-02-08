@@ -72,7 +72,7 @@ router.get('/loadData', function(req, res) {
           lastname: item[1],
           age: item[3],
           gender: item[2],
-          compagny: item[4],
+          company: item[4],
           departement: item[5],
           email: item[6],
           city: item[7],
