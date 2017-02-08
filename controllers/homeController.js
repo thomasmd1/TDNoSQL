@@ -129,8 +129,14 @@ router.get('/stats', function(req, res){
         $and: [{"gender": "Female"}, {"company": "Twimbo"}] })
         .sort({"age" : -1}).limit(1).then(function(personTest2){
 
-          res.render('stats.ejs', { personTest: personTest, p2: personTest2});
+          Person.find({
+            "email": /[0-9]/ })
+            .count().then(function(personTest3){
+
+
+          res.render('stats.ejs', { personTest: personTest, p2: personTest2, p3: personTest3});
       });
+  });
   });
 });
 
