@@ -129,14 +129,20 @@ router.get('/stats', function(req, res){
         $and: [{"gender": "Female"}, {"company": "Twimbo"}] })
         .sort({"age" : -1}).limit(1).then(function(personTest2){
 
+
+
           Person.find({
             "email": /[0-9]/ })
             .count().then(function(personTest3){
 
+              Person.find({ip_adress : { $regex : /^([0-9]{1,3}.)129\..*/ } })
+                .then(function(personTest4){
 
-          res.render('stats.ejs', { personTest: personTest, p2: personTest2, p3: personTest3});
+
+          res.render('stats.ejs', { personTest: personTest, p2: personTest2, p3: personTest3, p4: personTest4});
       });
-  });
+    });
+    });
   });
 });
 
