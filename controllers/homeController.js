@@ -122,24 +122,27 @@ router.get('/stats', function(req, res){
   var firstFilter;
   Person.find({
       $and: [{"gender": "Male"},{"age": {$gte: 20,$lte: 40}},{$or: [{"company": "Gigazoom"},{"company": "DabZ"}]}]
-    }).then(function(personTest){
-      console.log(personTest)
+    }).then(function(firstFilter){
+      console.log(firstFilter)
 
       Person.find({
         $and: [{"gender": "Female"}, {"company": "Twimbo"}] })
-        .sort({"age" : -1}).limit(1).then(function(personTest2){
+        .sort({"age" : -1}).limit(1).then(function(secondFilter){
+          console.log(secondFilter)
+
+          Person.find({ip_adress : { $regex : /^([0-9]{1,3}.)129\..*/ } })
+            .then(function(thirdFilter){
+              console.log(thirdFilter)
+
+            Person.find({
+              "email": /[0-9]/ })
+              .count().then(function(fourFilter){
+                console.log(fourFilter)
 
 
 
-          Person.find({
-            "email": /[0-9]/ })
-            .count().then(function(personTest3){
 
-              Person.find({ip_adress : { $regex : /^([0-9]{1,3}.)129\..*/ } })
-                .then(function(personTest4){
-
-
-          res.render('stats.ejs', { personTest: personTest, p2: personTest2, p3: personTest3, p4: personTest4});
+          res.render('stats.ejs', { p1: firstFilter, p2: secondFilter, p3: thirdFilter, p4: fourFilter});
       });
     });
     });
