@@ -33,11 +33,16 @@
                     <% if(i<=current && i>current-5) { %>
                     <li <% if(current==i){ %> class="active" <% } %>><a href="/page/<%= i %>"> <%= i %> </a></li>
                     <% } %>
-                    <% if(i>current && i<current+5) { %>
+                    <% if(i>current && i<current+5 && i<=pages+1) { %>
                     <li <% if(current==i){ %> class="active" <% } %>><a href="/page/<%= i %>"> <%= i %> </a></li>
                     <% } %>
                   <% } %>
-                <li class="page-item"><a class="page-link" href="/page/<%= current+1 %>">Next</a></li>
+                <% if(current>=pages){ %>
+                  <li class="page-item"><a class="page-link" href="/page/<%= current %>">Last</a></li>
+                <% }else { %>
+                  <li class="page-item"><a class="page-link" href="/page/<%= current+1 %>">Next</a></li>
+                <% } %>
+
               </ul>
             </div>
           </div>

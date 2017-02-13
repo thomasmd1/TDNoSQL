@@ -97,6 +97,10 @@ router.post('/add', function(req, res) {
     var p = new Person({
         firstname: req.body.user.firstname,
         lastname: req.body.user.lastname,
+        email: req.body.user.email,
+        company: req.body.user.company,
+        gender:req.body.optradio,
+        ip_adress: req.body.user.ip,
         age: req.body.user.age
     });
 
