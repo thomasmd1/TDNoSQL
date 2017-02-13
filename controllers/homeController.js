@@ -121,12 +121,12 @@ router.get('/delete', function(req, res) {
 router.get('/stats', function(req, res){
   var firstFilter;
   Person.find({
-      $and: [{"gender": "Male"},{"age": {$gte: 20,$lte: 40}},{$or: [{"company": "Gigazoom"},{"company": "DabZ"}]}]
+      $and: [{"gender": "Male"},{"age": {$gte: 20,$lte: 40}},{$or: [{"company": "Quamba"},{"company": "Zoomcast"}]}]
     }).then(function(firstFilter){
       console.log(firstFilter)
 
       Person.find({
-        $and: [{"gender": "Female"}, {"company": "Twimbo"}] })
+        $and: [{"gender": "Female"}, {"company": "Meevee"}] })
         .sort({"age" : -1}).limit(1).then(function(secondFilter){
           console.log(secondFilter)
 
