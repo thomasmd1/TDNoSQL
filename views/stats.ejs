@@ -26,7 +26,9 @@
           <h3>Le nombre de personne ayant un chiffre dans leur adresse mail</h3>
           <%= p4 %>
           <h3>Le nom de l’entreprise ayant le pourcentage de femmes le plus élevé, ainsi que le pourcentage</h3>
-
+          <% p5.forEach(function(p) { %>
+              <li><%= p.company + ' ' + p.percent*100 + '% de femme'%></li>
+          <% }); %>
         </div>
 
 

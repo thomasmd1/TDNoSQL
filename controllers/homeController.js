@@ -141,12 +141,31 @@ router.get('/stats', function(req, res){
             Person.find({
               "email": /[0-9]/ })
               .count().then(function(fourFilter){
-                //console.log(fourFilter)
+                //console.log(fourFilter
+
+                Person.aggregate({$group:
+                  {
+                    _id:"$company",
+                    nbrFemmes:{$sum: {$cond: {if: {$eq:["$gender","Female"]}, then:1, else:0 } } },
+                    totalPersonnes:{$sum:1},
+                  }
+                },
+                {$project:
+                  {
+                    _id:0,
+                    company:"$_id",
+                    percent:{$divide:["$nbrFemmes","$totalPersonnes"]}
+                  }
+                },
+                {$sort:{percent:-1}},
+                {$limit:1})
+                  .then(function(fiveFilter){
 
 
 
 
-          res.render('stats.ejs', { p1: firstFilter, p2: secondFilter, p3: thirdFilter, p4: fourFilter});
+          res.render('stats.ejs', { p1: firstFilter, p2: secondFilter, p3: thirdFilter, p4: fourFilter, p5: fiveFilter});
+      });
       });
     });
     });
