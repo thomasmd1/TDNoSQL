@@ -123,21 +123,21 @@ router.get('/stats', function(req, res){
   Person.find({
       $and: [{"gender": "Male"},{"age": {$gte: 20,$lte: 40}},{$or: [{"company": "Quamba"},{"company": "Zoomcast"}]}]
     }).then(function(firstFilter){
-      console.log(firstFilter)
+      //console.log(firstFilter)
 
       Person.find({
         $and: [{"gender": "Female"}, {"company": "Meevee"}] })
         .sort({"age" : -1}).limit(1).then(function(secondFilter){
-          console.log(secondFilter)
+          //console.log(secondFilter)
 
           Person.find({ip_adress : { $regex : /^([0-9]{1,3}.)129\..*/ } })
             .then(function(thirdFilter){
-              console.log(thirdFilter)
+              //console.log(thirdFilter)
 
             Person.find({
               "email": /[0-9]/ })
               .count().then(function(fourFilter){
-                console.log(fourFilter)
+                //console.log(fourFilter)
 
 
 
