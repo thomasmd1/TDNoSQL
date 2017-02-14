@@ -115,11 +115,11 @@ router.get('/delete', function(req, res) {
             if (err) {
                 console.log(err)
             } else {
-                res.end('success');
+                res.redirect('/');
             }
         }
     );
-  res.redirect('/');
+
 })
 
 router.get('/stats', function(req, res){
