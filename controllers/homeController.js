@@ -17,6 +17,10 @@ router.get('/page/:page', function(req, res) {
       if(currentPage<=0){
         currentPage=1;
       }
+      if(currentPage>nbPage+1){
+        currentPage=1;
+      }
+
       min=currentPage*100-100;
       limit=100;
 
